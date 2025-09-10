@@ -1,0 +1,422 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+card_data/README.md
+card_data/v2_to_v1.rb
+card_data/cards/en/base1.json
+card_data/cards/en/base2.json
+card_data/cards/en/base3.json
+card_data/cards/en/base4.json
+card_data/cards/en/base5.json
+card_data/cards/en/base6.json
+card_data/cards/en/basep.json
+card_data/cards/en/bp.json
+card_data/cards/en/bw1.json
+card_data/cards/en/bw2.json
+card_data/cards/en/bw3.json
+card_data/cards/en/bw4.json
+card_data/cards/en/bw5.json
+card_data/cards/en/bw6.json
+card_data/cards/en/bw7.json
+card_data/cards/en/bw8.json
+card_data/cards/en/bw9.json
+card_data/cards/en/bw10.json
+card_data/cards/en/bw11.json
+card_data/cards/en/bwp.json
+card_data/cards/en/cel25.json
+card_data/cards/en/cel25c.json
+card_data/cards/en/col1.json
+card_data/cards/en/dc1.json
+card_data/cards/en/det1.json
+card_data/cards/en/dp1.json
+card_data/cards/en/dp2.json
+card_data/cards/en/dp3.json
+card_data/cards/en/dp4.json
+card_data/cards/en/dp5.json
+card_data/cards/en/dp6.json
+card_data/cards/en/dp7.json
+card_data/cards/en/dpp.json
+card_data/cards/en/dv1.json
+card_data/cards/en/ecard1.json
+card_data/cards/en/ecard2.json
+card_data/cards/en/ecard3.json
+card_data/cards/en/ex1.json
+card_data/cards/en/ex2.json
+card_data/cards/en/ex3.json
+card_data/cards/en/ex4.json
+card_data/cards/en/ex5.json
+card_data/cards/en/ex6.json
+card_data/cards/en/ex7.json
+card_data/cards/en/ex8.json
+card_data/cards/en/ex9.json
+card_data/cards/en/ex10.json
+card_data/cards/en/ex11.json
+card_data/cards/en/ex12.json
+card_data/cards/en/ex13.json
+card_data/cards/en/ex14.json
+card_data/cards/en/ex15.json
+card_data/cards/en/ex16.json
+card_data/cards/en/fut20.json
+card_data/cards/en/g1.json
+card_data/cards/en/gym1.json
+card_data/cards/en/gym2.json
+card_data/cards/en/hgss1.json
+card_data/cards/en/hgss2.json
+card_data/cards/en/hgss3.json
+card_data/cards/en/hgss4.json
+card_data/cards/en/hsp.json
+card_data/cards/en/mcd11.json
+card_data/cards/en/mcd12.json
+card_data/cards/en/mcd14.json
+card_data/cards/en/mcd15.json
+card_data/cards/en/mcd16.json
+card_data/cards/en/mcd17.json
+card_data/cards/en/mcd18.json
+card_data/cards/en/mcd19.json
+card_data/cards/en/mcd21.json
+card_data/cards/en/mcd22.json
+card_data/cards/en/neo1.json
+card_data/cards/en/neo2.json
+card_data/cards/en/neo3.json
+card_data/cards/en/neo4.json
+card_data/cards/en/np.json
+card_data/cards/en/pgo.json
+card_data/cards/en/pl1.json
+card_data/cards/en/pl2.json
+card_data/cards/en/pl3.json
+card_data/cards/en/pl4.json
+card_data/cards/en/pop1.json
+card_data/cards/en/pop2.json
+card_data/cards/en/pop3.json
+card_data/cards/en/pop4.json
+card_data/cards/en/pop5.json
+card_data/cards/en/pop6.json
+card_data/cards/en/pop7.json
+card_data/cards/en/pop8.json
+card_data/cards/en/pop9.json
+card_data/cards/en/rsv10pt5.json
+card_data/cards/en/ru1.json
+card_data/cards/en/si1.json
+card_data/cards/en/sm1.json
+card_data/cards/en/sm2.json
+card_data/cards/en/sm3.json
+card_data/cards/en/sm4.json
+card_data/cards/en/sm5.json
+card_data/cards/en/sm6.json
+card_data/cards/en/sm7.json
+card_data/cards/en/sm8.json
+card_data/cards/en/sm9.json
+card_data/cards/en/sm10.json
+card_data/cards/en/sm11.json
+card_data/cards/en/sm12.json
+card_data/cards/en/sm35.json
+card_data/cards/en/sm75.json
+card_data/cards/en/sm115.json
+card_data/cards/en/sma.json
+card_data/cards/en/smp.json
+card_data/cards/en/sv1.json
+card_data/cards/en/sv2.json
+card_data/cards/en/sv3.json
+card_data/cards/en/sv3pt5.json
+card_data/cards/en/sv4.json
+card_data/cards/en/sv4pt5.json
+card_data/cards/en/sv5.json
+card_data/cards/en/sv6.json
+card_data/cards/en/sv6pt5.json
+card_data/cards/en/sv7.json
+card_data/cards/en/sv8.json
+card_data/cards/en/sv8pt5.json
+card_data/cards/en/sv9.json
+card_data/cards/en/sv10.json
+card_data/cards/en/sve.json
+card_data/cards/en/svp.json
+card_data/cards/en/swsh1.json
+card_data/cards/en/swsh2.json
+card_data/cards/en/swsh3.json
+card_data/cards/en/swsh4.json
+card_data/cards/en/swsh5.json
+card_data/cards/en/swsh6.json
+card_data/cards/en/swsh7.json
+card_data/cards/en/swsh8.json
+card_data/cards/en/swsh9.json
+card_data/cards/en/swsh9tg.json
+card_data/cards/en/swsh10.json
+card_data/cards/en/swsh10tg.json
+card_data/cards/en/swsh11.json
+card_data/cards/en/swsh11tg.json
+card_data/cards/en/swsh12.json
+card_data/cards/en/swsh12pt5.json
+card_data/cards/en/swsh12pt5gg.json
+card_data/cards/en/swsh12tg.json
+card_data/cards/en/swsh35.json
+card_data/cards/en/swsh45.json
+card_data/cards/en/swsh45sv.json
+card_data/cards/en/swshp.json
+card_data/cards/en/tk1a.json
+card_data/cards/en/tk1b.json
+card_data/cards/en/tk2a.json
+card_data/cards/en/tk2b.json
+card_data/cards/en/xy0.json
+card_data/cards/en/xy1.json
+card_data/cards/en/xy2.json
+card_data/cards/en/xy3.json
+card_data/cards/en/xy4.json
+card_data/cards/en/xy5.json
+card_data/cards/en/xy6.json
+card_data/cards/en/xy7.json
+card_data/cards/en/xy8.json
+card_data/cards/en/xy9.json
+card_data/cards/en/xy10.json
+card_data/cards/en/xy11.json
+card_data/cards/en/xy12.json
+card_data/cards/en/xyp.json
+card_data/cards/en/zsv10pt5.json
+card_data/decks/en/base1.json
+card_data/decks/en/base2.json
+card_data/decks/en/base3.json
+card_data/decks/en/base4.json
+card_data/decks/en/base5.json
+card_data/decks/en/base6.json
+card_data/decks/en/bw1.json
+card_data/decks/en/bw2.json
+card_data/decks/en/bw3.json
+card_data/decks/en/bw4.json
+card_data/decks/en/bw5.json
+card_data/decks/en/bw6.json
+card_data/decks/en/bw7.json
+card_data/decks/en/bw8.json
+card_data/decks/en/bw9.json
+card_data/decks/en/bw10.json
+card_data/decks/en/col1.json
+card_data/decks/en/dp1.json
+card_data/decks/en/dp2.json
+card_data/decks/en/dp3.json
+card_data/decks/en/dp4.json
+card_data/decks/en/dp5.json
+card_data/decks/en/dp6.json
+card_data/decks/en/dp7.json
+card_data/decks/en/ecard1.json
+card_data/decks/en/ecard2.json
+card_data/decks/en/ecard3.json
+card_data/decks/en/ex1.json
+card_data/decks/en/ex2.json
+card_data/decks/en/ex3.json
+card_data/decks/en/ex4.json
+card_data/decks/en/ex5.json
+card_data/decks/en/ex6.json
+card_data/decks/en/ex7.json
+card_data/decks/en/ex8.json
+card_data/decks/en/ex9.json
+card_data/decks/en/ex10.json
+card_data/decks/en/ex11.json
+card_data/decks/en/ex12.json
+card_data/decks/en/ex13.json
+card_data/decks/en/ex14.json
+card_data/decks/en/ex15.json
+card_data/decks/en/ex16.json
+card_data/decks/en/gym1.json
+card_data/decks/en/gym2.json
+card_data/decks/en/hgss1.json
+card_data/decks/en/hgss2.json
+card_data/decks/en/hgss3.json
+card_data/decks/en/hgss4.json
+card_data/decks/en/neo1.json
+card_data/decks/en/neo2.json
+card_data/decks/en/neo4.json
+card_data/decks/en/pl1.json
+card_data/decks/en/pl2.json
+card_data/decks/en/pl3.json
+card_data/decks/en/pl4.json
+card_data/decks/en/sm1.json
+card_data/decks/en/sm2.json
+card_data/decks/en/sm3.json
+card_data/decks/en/sm4.json
+card_data/decks/en/sm5.json
+card_data/decks/en/sm6.json
+card_data/decks/en/sm7.json
+card_data/decks/en/sm8.json
+card_data/decks/en/sm9.json
+card_data/decks/en/sm10.json
+card_data/decks/en/swsh1.json
+card_data/decks/en/swsh2.json
+card_data/decks/en/swsh3.json
+card_data/decks/en/swsh4.json
+card_data/decks/en/xy0.json
+card_data/decks/en/xy1.json
+card_data/decks/en/xy2.json
+card_data/decks/en/xy3.json
+card_data/decks/en/xy4.json
+card_data/decks/en/xy5.json
+card_data/decks/en/xy6.json
+card_data/decks/en/xy7.json
+card_data/decks/en/xy8.json
+card_data/decks/en/xy9.json
+card_data/decks/en/xy10.json
+card_data/decks/en/xy11.json
+card_data/decks/en/xy12.json
+card_data/sets/en.json
+
+# Firebase Key
+scripts/key.json
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for instrumented libs generated by jscoverage/JSCover
+lib-cov
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Bower dependency directory (https://bower.io/)
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons (https://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env
+.env.*
+!.env.example
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+# Comment in the public line in if your project uses Gatsby and not Next.js
+# https://nextjs.org/blog/next-9-1#public-directory-support
+# public
+
+# vuepress build output
+.vuepress/dist
+
+# vuepress v2.x temp and cache directory
+.temp
+.cache
+
+# Sveltekit cache directory
+.svelte-kit/
+
+# vitepress build output
+**/.vitepress/dist
+
+# vitepress cache directory
+**/.vitepress/cache
+
+# Docusaurus cache and generated files
+.docusaurus
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# Firebase cache directory
+.firebase/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v3
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Vite logs files
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
