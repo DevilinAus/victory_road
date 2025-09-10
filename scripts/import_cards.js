@@ -48,12 +48,16 @@ async function getFilenames() {
 
       const status = loadStatus();
 
-      if (status[setName].uploaded) {
-        console.log(`Skipping ${setName}, already uploaded!`);
+      // check for empty 
+      if (Object.keys(status).length === 0) {
+        await importSet(directory + filename, setName)
       } else {
-        await importSet("filepath", setName)
+        if (status[setName].uploaded) {
+          console.log(`Skipping ${setName}, already uploaded!`);
+        } else {
+          await importSet(directory + filename, setName)
+        }
       }
-
 
       //. Need to look at returning a true or false and either printing error or printing success 
       // and updating STATUS_FILE
