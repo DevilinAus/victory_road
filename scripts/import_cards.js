@@ -47,16 +47,26 @@ async function getFilenames() {
       //========== CHECK STATUS =======================
 
       const status = loadStatus();
+      let uploadedSuccess = false;
 
       // check for empty 
       if (Object.keys(status).length === 0) {
-        await importSet(directory + filename, setName)
+        uploadedSuccess = await importSet(directory + filename, setName)
       } else {
-        if (status[setName].uploaded) {
+        if (status[setName] && status[setName].uploaded) {
           console.log(`Skipping ${setName}, already uploaded!`);
         } else {
-          await importSet(directory + filename, setName)
+          uploadedSuccess = await importSet(directory + filename, setName)
         }
+      }
+
+      // IF SUCCESS WRITE TO STATUS FILE
+      if (uploadedSuccess) {
+        status[setName] = {
+          uploaded: true,
+          lastUploaded : new Date().toISOString()
+        };
+        saveStatus(status)
       }
 
       //. Need to look at returning a true or false and either printing error or printing success 
@@ -76,19 +86,25 @@ async function importSet(filename, setName) {
   const allCards = await import(filename, {with: {type: "json"}})  // allCards [card0,card1]
   // console.log(typeof allCards)
 
-  const setRef = db.collection('card_data').doc(setName)
-  await setRef.set({}); 
+  // UNCOMMENT BLOCK TO ENABLE LIVE DATABASE WRITES
+  // const setRef = db.collection('card_data').doc(setName)
+  // await setRef.set({}); 
 
   for (const cardObject of allCards.default) {
     await addDataToDatabase(setName, cardObject.id, cardObject)
   }
+  return true
 }
 
 async function addDataToDatabase(setID, cardID, cardData) {
-  const cardRef = db.collection('card_data').doc(setID).collection('cards').doc(cardID);
-  console.log(`ADDED: card_data/${setID}/cards/${cardID}`)
-  await cardRef.set(cardData);
+  // UNCOMMENT BLOCK TO ENABLE LIVE DATABASE WRITES
+  // const cardRef = db.collection('card_data').doc(setID).collection('cards').doc(cardID);
+  // console.log(`ADDED: card_data/${setID}/cards/${cardID}`)
+  // await cardRef.set(cardData);
   
+  const outputCardData = setID + cardID;
+  fs.writeFileSync("test_output.txt", outputCardData, "utf8")
+  console.log(`Wrote ${outputCardData}`)
 
 }
 
