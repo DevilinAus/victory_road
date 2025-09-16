@@ -51,6 +51,7 @@ async function getFilenames() {
 
       // check for empty 
       if (Object.keys(status).length === 0) {
+        console.log("EMPTY STATUS FOUND STARTING IMPORT")
         uploadedSuccess = await importSet(directory + filename, setName)
       } else {
         if (status[setName] && status[setName].uploaded) {
@@ -61,6 +62,8 @@ async function getFilenames() {
       }
 
       // IF SUCCESS WRITE TO STATUS FILE
+
+      // BUG THIS IS CURRENTLY GETTING SET TO TRUE EVEN IF PROGRAM CRASHES.
       if (uploadedSuccess) {
         status[setName] = {
           uploaded: true,
@@ -75,7 +78,7 @@ async function getFilenames() {
 
       //////////////////////////////////////////////////
       /// THIS NEEDS TO BE UPDATED TO HANDLE A BATCH OF THE FULL SET
-      await importSet(directory + filename, setName)
+      // await importSet(directory + filename, setName)
     }
     
   }
@@ -91,7 +94,8 @@ async function importSet(filename, setName) {
   // await setRef.set({}); 
 
   for (const cardObject of allCards.default) {
-    await addDataToDatabase(setName, cardObject.id, cardObject)
+    // await addDataToDatabase(setName, cardObject.id, cardObject)
+    uploadBatch(filename)
   }
   return true
 }
@@ -104,7 +108,8 @@ async function addDataToDatabase(setID, cardID, cardData) {
   
   const outputCardData = setID + cardID;
   fs.writeFileSync("test_output.txt", outputCardData, "utf8")
-  console.log(`Wrote ${outputCardData}`)
+  // console.log(`Wrote CARD ${outputCardData}`)
+  console.log(`Wrote SET ${setID}`)
 
 }
 
@@ -112,6 +117,25 @@ async function addDataToDatabase(setID, cardID, cardData) {
 // snapshot.forEach((doc) => {
 //   console.log(doc.id, "=>", doc.data());
 // });
+
+
+async function uploadBatch(filename) {
+  const allCards = await import(filename, {with: {type: "json"}})  // allCards [card0,card1]
+
+  // Get a new write batch
+  // const batch = db.batch();
+
+  for (const cardObject of allCards.default) {
+    // const cardRef = db.collection('card_data').doc(setID).collection('cards').doc(cardID);
+    // batch.set(cardRef, {cardData}) 
+    console.log("test1")
+  }
+  
+
+  // Commit the batch
+  // await batch.commit();
+
+}
 
 
 getFilenames()
