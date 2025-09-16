@@ -38,56 +38,40 @@ async function getFilenames() {
   const directory = "../card_data/cards/en/"
   const cardFiles = fs.readdirSync(directory)
   for (const filename of cardFiles) {
-    // clear the set name
-    const setName = path.parse(filename).name
+    
+    const setName = path.parse(filename).name // extracts the name of the file (without .json) to use as setName
 
     if (filename.endsWith(".json")) {
-      // console.log(directory + filename)
-      /////////////////////////////////////////////////
-      //========== CHECK STATUS =======================
 
-      const status = loadStatus();
+      const uploadStatuses = loadStatus();
       let uploadedSuccess = false;
 
-      // check for empty 
-      if (Object.keys(status).length === 0) {
+      if (Object.keys(uploadStatuses).length === 0) {
         console.log("EMPTY STATUS FOUND STARTING IMPORT")
         uploadedSuccess = await importSet(directory + filename, setName)
       } else {
-        if (status[setName] && status[setName].uploaded) {
+        if (uploadStatuses[setName] && uploadStatuses[setName].uploaded) {
           console.log(`Skipping ${setName}, already uploaded!`);
         } else {
-          uploadedSuccess = await importSet(directory + filename, setName)
+          uploadedSuccess = await importSet(directory + filename, setName); // if set not uploaded import the set to the database (this also does cards)
         }
       }
 
-      // IF SUCCESS WRITE TO STATUS FILE
-
-      // BUG THIS IS CURRENTLY GETTING SET TO TRUE EVEN IF PROGRAM CRASHES.
+      // CHECK FOR UPLOAD SUCCESS
       if (uploadedSuccess) {
-        status[setName] = {
+        uploadStatuses[setName] = {
           uploaded: true,
           lastUploaded : new Date().toISOString()
         };
-        saveStatus(status)
+        saveStatus(uploadStatuses)
+        console.log(`${setName} uploaded successfully, updating upload_status.json`)
       }
-
-      //. Need to look at returning a true or false and either printing error or printing success 
-      // and updating STATUS_FILE
-
-
-      //////////////////////////////////////////////////
-      /// THIS NEEDS TO BE UPDATED TO HANDLE A BATCH OF THE FULL SET
-      // await importSet(directory + filename, setName)
     }
-    
   }
 }
 
-// /card_data/sv1/cards/sv1-1
 async function importSet(filename, setName) {
   const allCards = await import(filename, {with: {type: "json"}})  // allCards [card0,card1]
-  // console.log(typeof allCards)
 
   // UNCOMMENT BLOCK TO ENABLE LIVE DATABASE WRITES
   // const setRef = db.collection('card_data').doc(setName)
@@ -95,46 +79,53 @@ async function importSet(filename, setName) {
 
   for (const cardObject of allCards.default) {
     // await addDataToDatabase(setName, cardObject.id, cardObject)
-    uploadBatch(filename)
+    return uploadBatch(filename, setName)
   }
-  return true
 }
 
-async function addDataToDatabase(setID, cardID, cardData) {
-  // UNCOMMENT BLOCK TO ENABLE LIVE DATABASE WRITES
-  // const cardRef = db.collection('card_data').doc(setID).collection('cards').doc(cardID);
-  // console.log(`ADDED: card_data/${setID}/cards/${cardID}`)
-  // await cardRef.set(cardData);
+// async function addDataToDatabase(setID, cardID, cardData) {
+//   // UNCOMMENT BLOCK TO ENABLE LIVE DATABASE WRITES
+//   // const cardRef = db.collection('card_data').doc(setID).collection('cards').doc(cardID);
+//   // console.log(`ADDED: card_data/${setID}/cards/${cardID}`)
+//   // await cardRef.set(cardData);
   
-  const outputCardData = setID + cardID;
-  fs.writeFileSync("test_output.txt", outputCardData, "utf8")
-  // console.log(`Wrote CARD ${outputCardData}`)
-  console.log(`Wrote SET ${setID}`)
+//   const outputCardData = setID + cardID;
+//   fs.writeFileSync("test_output.txt", outputCardData, "utf8")
+//   // console.log(`Wrote CARD ${outputCardData}`)
+//   console.log(`Wrote SET ${setID}`)
 
-}
+// }
 
-// const snapshot = await db.collection("sv1").get();
-// snapshot.forEach((doc) => {
-//   console.log(doc.id, "=>", doc.data());
-// });
+// // const snapshot = await db.collection("sv1").get();
+// // snapshot.forEach((doc) => {
+// //   console.log(doc.id, "=>", doc.data());
+// // });
 
 
-async function uploadBatch(filename) {
-  const allCards = await import(filename, {with: {type: "json"}})  // allCards [card0,card1]
+async function uploadBatch(filename, setName) {
+  try {
 
-  // Get a new write batch
-  // const batch = db.batch();
+    const allCards = await import(filename, {with: {type: "json"}})  // allCards [card0,card1]
 
-  for (const cardObject of allCards.default) {
-    // const cardRef = db.collection('card_data').doc(setID).collection('cards').doc(cardID);
-    // batch.set(cardRef, {cardData}) 
-    console.log("test1")
-  }
+    // Get a new write batch
+    const batch = db.batch();
+
+    for (const cardObject of allCards.default) {
+      const cardRef = db.collection('card_data').doc(setName).collection('cards').doc(cardObject.id);
+      batch.set(cardRef, cardObject) 
+      console.log(`Added ${cardObject.id} to the batch.`)
+      
+    }
   
-
   // Commit the batch
-  // await batch.commit();
+  await batch.commit();
+  console.log("upload complete");
+  return true;
 
+  } catch (error) {
+    console.log("Batch upload failed!", error);
+    return false;
+  }  
 }
 
 
